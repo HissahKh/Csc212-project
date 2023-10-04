@@ -1,6 +1,5 @@
 package Csc212Project;
 
-public class Contact {
 public class Contact implements Comparable<String>{
 private String contactName;
 private String phoneNumber;
