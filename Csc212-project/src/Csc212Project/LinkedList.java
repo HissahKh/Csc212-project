@@ -117,7 +117,19 @@ public class LinkedList<T>{
 		
 		Node<Contact> current = (Node<Contact>) head;
 		
-		while(!(current.getData().getContactName().equals(c.getContactName()))&&!(current.getData().getPhoneNu().equals(c.getContactName())))
+		while(current != null){
+			
+			if(current.getData().getContactName().compareTo(c.getContactName()) == 0 && current.getData().getPhoneNumber().compareTo(c.getPhoneNumber()) == 0)
+			   return true;
+				
+			current = current.getNext();
+			
+		}
+		
+		return false;
+		
+		
+		
 		
 	}
 
