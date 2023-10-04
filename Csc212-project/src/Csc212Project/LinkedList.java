@@ -119,7 +119,7 @@ public class LinkedList<T>{
 		
 		while(current != null){
 			
-			if(current.getData().getContactName().compareTo(c.getContactName()) == 0 && current.getData().getPhoneNumber().compareTo(c.getPhoneNumber()) == 0)
+			if(current.getData().getContactName().compareTo(c.getContactName()) == 0 || current.getData().getPhoneNumber().compareTo(c.getPhoneNumber()) == 0)
 			   return true;
 				
 			current = current.getNext();
