@@ -40,6 +40,10 @@ contactName=n;
 public void setPhoneNumber(String p){
 phoneNumber=p;
 }
+  public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
 
 public void setEmailAddress(String e){
 emailAddress=e;

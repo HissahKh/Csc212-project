@@ -115,7 +115,9 @@ public class LinkedList<T>{
 	
 	public boolean exist(Contact c) {
 		
+		Node<Contact> current = (Node<Contact>) head;
 		
+		while(!(current.getData().getContactName().equals(c.getContactName()))&&!(current.getData().getPhoneNu().equals(c.getContactName())))
 		
 	}
 
