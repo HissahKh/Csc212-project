@@ -18,7 +18,7 @@ public class Node {
 		
 	}
 
-  public T getData() {
+        public T getData() {
 		return data;
 	}
 
