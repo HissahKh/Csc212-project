@@ -24,7 +24,7 @@ notes=c.notes;
 events=c.events;
 }
 
-public Contact(String contactName, String phoneNumber, String emailAddress, String address, String birthday, String notes, LinkedList<Event> events){
+public Contact(String contactName, String phoneNumber, String emailAddress, String address, String birthday, String notes){
 this.contactName=contactName;
 this.phoneNumber=phoneNumber;
 this.emailAddress=emailAddress;
