@@ -58,7 +58,7 @@ public class LinkedList<T>{
 			
 			while(current != null) {
 				
-				if(((Contact) newNode.getData()).compareTo(((Contact) current.getData())) < 0) {
+				if(((Contact) newNode.getData()).getContactName().compareToIgnoreCase(((Contact) current.getData()).getContactName()) < 0) {
 					
 					current = current.getNext();
 					
