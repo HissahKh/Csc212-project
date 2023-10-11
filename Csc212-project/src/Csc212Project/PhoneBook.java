@@ -43,7 +43,7 @@ while(ch != 8){
 	case 2:
 		System.out.println("Enter search criteria:");
 		System.out.println("1.Name");
-		System.out.println("2. Phone Number");
+		System.out.println("2.Phone Number");
 		System.out.println("3.Email Address");
 		System.out.println("4.Address");
 		System.out.println("5.Birthday");
