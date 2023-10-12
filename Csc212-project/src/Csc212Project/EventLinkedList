@@ -54,14 +54,14 @@ public class EventLinkedList<T>{
 			if(exist((Event) n)) {return;}//exist
 			
 
-			if (head == null || ((Event)head.getData()).getEventTitle().compareToIgnoreCase(((Event)newNode.getData()).getEventTitle()) > 0) 
+			if (head == null || ((Event)head.getData()).getEventTitle().replaceAll("\\s+","").compareToIgnoreCase(((Event)newNode.getData()).getEventTitle().replaceAll("\\s+","")) > 0) 
 			{
 				newNode.next = head;
 				head = newNode;
 			}
 			else {
 				 Node current = head;
-			     while (current.next != null && ((Event)current.next.getData()).getEventTitle().compareToIgnoreCase(((Event)newNode.getData()).getEventTitle()) < 0)  {
+			     while (current.next != null && ((Event)current.next.getData()).getEventTitle().replaceAll("\\s+","").compareToIgnoreCase(((Event)newNode.getData()).getEventTitle().replaceAll("\\s+","")) < 0)  {
 			         current = current.next;
 			     }
 			     newNode.next = current.next;
@@ -143,7 +143,7 @@ public class EventLinkedList<T>{
 			
 			while(current != null){
 				
-				if(current.getData().getEventTitle().compareTo(c.getEventTitle()) == 0 )
+				if(current.getData().getEventTitle().compareTo(c.getEventTitle().replaceAll("\\s+","")) == 0 )
 				   return true;
 					
 				current = current.getNext();
@@ -161,4 +161,3 @@ public class EventLinkedList<T>{
 	  
 
 	}
-
