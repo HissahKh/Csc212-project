@@ -76,29 +76,69 @@ public class LinkedList<T>{
 		
 		
 		
-		public T search(T s) {
+		
+	public boolean search(T s, int n) {
+		
+		if(isEmpty())
+			return false; //message?
 			
-			if(isEmpty())
-				return null; //message?
+		
+		Node<T> newNode = new Node<T>(s);
+		
+		Node<T> current = head;
+		
+		while(current != null){
+		
+		if(n == 1) {
+		
+			if(((Contact) newNode.getData()).getContactName().equals(((Contact) current.getData()).getContactName())){
 			
-			else {
-				
-				Node<T> current = head;
-				
-				while (current != null) {
-					
-					if(current.getData().equals(s))
-						return current.getData();
-					
-					current = current.getNext();
-					
-				}
-				
-				return null;
-				
+			return true;
+			
 			}
+		}
+			
+		if(n == 2){
+		
+			if(((Contact) newNode.getData()).getPhoneNumber().equals(((Contact) current.getData()).getPhoneNumber())){
+			
+			return true;
 			
 		}
+		}
+		
+		if(n == 3){
+		
+			if(((Contact) newNode.getData()).getEmailAddress().equals(((Contact) current.getData()).getEmailAddress())){
+			
+			return true;
+			
+		}
+		}
+		
+		if(n == 4){
+		
+			if(newNode.getData().getClass().equals(current.getData().getClass())){
+			
+			return true;
+			
+		}
+		}
+		
+		if(n == 5){
+		
+			if(((Contact) newNode.getData()).getBirthday().equals(((Contact) current.getData()).getBirthday())){
+			
+			return true;
+			
+		}
+		
+		}
+		}
+		
+		return false;
+		
+	}
 		
 		public void delete(T d) {
 			
