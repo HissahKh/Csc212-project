@@ -2,8 +2,8 @@ package Csc212Project;
 
 public class Node<T>{
 	
-	 private T data;
-     private Node<T> next;
+	public T data;
+    public Node<T> next;
 		
 		
 		public Node() {
@@ -18,7 +18,7 @@ public class Node<T>{
 			
 		}
 
-<<<<<<< HEAD
+
 	        public T getData() {
 			return data;
 		}
@@ -35,40 +35,4 @@ public class Node<T>{
 			this.next = next;
 		}
 		
-=======
-  private T data;
-	private Node<T> next;
-	
-	
-	public Node() {
-		data = null;
-		next = null;
-	}
-	
-	public Node(T data) {
-		
-		this.data = data;
-		next = null;
-		
-	}
-
-        public T getData() {
-		return data;
-	}
-
-	public void setData(T data) {
-		this.data = data;
-	}
-
-	public Node<T> getNext() {
-		return next;
-	}
-
-	public void setNext(Node<T> next) {
-		this.next = next;
-	}
-	
-
->>>>>>> branch 'main' of https://github.com/HissahKh/Csc212-project.git
-
 }
