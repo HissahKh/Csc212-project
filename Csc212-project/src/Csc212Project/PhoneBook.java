@@ -2,12 +2,6 @@ package Csc212Project;
 import java.util.Scanner;
 
 public class Phonebook {
-	LinkedList <Contact> a1 = new LinkedList<Contact>();
-	EventLinkedList <Event> e1 = new EventLinkedList<Event>();
-	public void displayEvnt()
-	{
-		
-	}
 	public static void main(String [] args) {
 	Scanner input = new Scanner(System.in);
 		
