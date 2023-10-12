@@ -140,17 +140,6 @@ case 8:
 	ch = 8;
 	break;
 	}
-	
-	e1.findfirst();
-	while(!a1.last())
-	{
-	Contact a = a1.retrieve();
-	System.out.println(a.getAddress() + "," + a.getBirthday() + "," + a.getContactName());
-	a1.findnext();
-	}
-	Contact a = a1.retrieve();
-	System.out.println(a.getAddress() + "," + a.getBirthday() + "," + a.getContactName());
-
 }while(ch != 8);
 
 }}
