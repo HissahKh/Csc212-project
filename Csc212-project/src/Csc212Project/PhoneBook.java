@@ -2,6 +2,12 @@ package Csc212Project;
 import java.util.Scanner;
 
 public class Phonebook {
+	LinkedList <Contact> a1 = new LinkedList<Contact>();
+	EventLinkedList <Event> e1 = new EventLinkedList<Event>();
+	public void displayEvnt()
+	{
+		
+	}
 	public static void main(String [] args) {
 	Scanner input = new Scanner(System.in);
 		
@@ -46,6 +52,7 @@ do{
 		break;
 		
 		
+		
 	case 2:
 		//search
 		System.out.println("Enter search criteria: ");
@@ -55,7 +62,34 @@ do{
 		System.out.println("4.Address");
 		System.out.println("5.Birthday");
 		int choice1 = input.nextInt();
+		switch (choice1){
+		case 1:
+			System.out.println("Enter the contact name: ");
+			input.nextLine();
+			String n2 = input.nextLine();
+			a1.search(n2, choice1);
+			break;
+		case 2:
+			System.out.println("Enter the phone number of the contact");
+			String p2 = input.next();
+			a1.search(p2, choice1);
+		case 3:
+			System.out.println("Enter the Email of the contact");
+			String e2 = input.next();
+			a1.search(e2, choice1);
+		case 4:
+			System.out.println("Enter the Address of the contact");
+			input.nextLine();
+			String a2 = input.nextLine();
+			a1.search(a2, choice1);
+		case 5:
+			System.out.println("Enter the Birthday of the contact");
+			input.nextLine();
+			String b2 = input.nextLine();
+			a1.search(b2, choice1);
+		}
 		break;
+		
 		
 		
 	case 3:
@@ -65,8 +99,21 @@ do{
 		a1.findfirst();
 		while(!a1.last())
 		{
+			e1.findfirst();
 			if(a1.retrieve().getPhoneNumber().equals(ph)) {
-			a1.delete(a1.retrieve());
+			while(!e1.last()) {
+				if(e1.retrieve().getContact().getPhoneNumber().equals(ph)) {//for deleting events
+					e1.delete(e1.retrieve());
+				}
+				e1.findnext();
+			}
+			if(e1.retrieve().getContact().getPhoneNumber().equals(ph)) {
+				e1.delete(e1.retrieve());
+			}
+			e1.findnext();
+			}
+			if(a1.retrieve().getPhoneNumber().equals(ph)) {
+				a1.delete(a1.retrieve());
 			System.out.println("The contact has been deleted");}
 			a1.findnext();
 		}
@@ -100,10 +147,27 @@ do{
 		String location = input.nextLine();
 		Event newEvent = new Event(title , date_time , location , contact_name);
 		e1.add(newEvent);
-		
+break;
 		
 	case 5:
-		//we need search method in the Event Linked List
+		System.out.println("Enter search criteria:");
+		System.out.println("1.contact name");
+		System.out.println("2.Event tittle");
+		int ch1 = input.nextInt();
+		if(ch1 == 1) {
+		System.out.println("Enter the contact name: ");
+		input.nextLine();
+		String name1 = input.nextLine();
+		e1.search(name1, ch1);
+		}
+		if(ch1 == 2) {
+		System.out.println("Enter the event title: ");
+		input.nextLine();
+		String name1 = input.nextLine();
+		e1.search(name1, ch1);
+			}
+		
+		
 		break;
 
 		
@@ -150,13 +214,17 @@ case 8:
 
 }while(ch != 8);
 
-//هذا حطيته عشان اشوف الليست بعد التعديل وكذا يعني حق تشييك مو من ضمن الكود
 a1.findfirst();
 while(!a1.last()) {
 	System.out.println(a1.retrieve().getContactName());
 	a1.findnext();
 	
 }
+System.out.println(a1.retrieve().getContactName());
+a1.findnext();
+
+}}
+
 System.out.println(a1.retrieve().getContactName());
 a1.findnext();
 
