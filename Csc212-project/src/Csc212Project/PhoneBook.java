@@ -42,7 +42,7 @@ do{
 		String note = input.next();
 		Contact newContact = new Contact(name , number , email , adrs , Birthday , note);
 		a1.add(newContact);
-		System.out.println("Contact added successfully!");
+		System.out.println("Thank you");
 		break;
 		
 		
@@ -65,13 +65,15 @@ do{
 		a1.findfirst();
 		while(!a1.last())
 		{
-			if(a1.retrieve().getPhoneNumber().equals(ph));
+			if(a1.retrieve().getPhoneNumber().equals(ph)) {
 			a1.delete(a1.retrieve());
+			System.out.println("The contact has been deleted");}
 			a1.findnext();
 		}
-		if(a1.retrieve().getPhoneNumber().equals(ph));
+		if(a1.retrieve().getPhoneNumber().equals(ph)) {
 		a1.delete(a1.retrieve());
-		System.out.println("The contact has been deleted");
+		System.out.println("The contact has been deleted");}
+		
 		break;
 		
 		
@@ -81,16 +83,17 @@ do{
 		input.nextLine();
 		String title = input.nextLine();
 		System.out.println("Enter the contact name: ");
-		input.nextLine();
 		String contact_n = input.nextLine();
 		a1.findfirst();
+		Contact contact_name = a1.retrieve(); //head for now 
 		while(!a1.last())
 		{
-			if(a1.retrieve().getContactName().equalsIgnoreCase(contact_n));//Search for the contact by name and retrieve it 
-			Contact contact_name = a1.retrieve();
+			if(a1.retrieve().getContactName().replaceAll("\\s+","").equalsIgnoreCase(contact_n.replaceAll("\\s+",""))){//Search for the contact by name and retrieve it 
+			contact_name = a1.retrieve();}
+			a1.findnext();
 		}
-		if(a1.retrieve().getContactName().equals(contact_n)); //check for the last element
-		Contact contact_name = a1.retrieve();
+		if(a1.retrieve().getContactName().replaceAll("\\s+","").equalsIgnoreCase(contact_n.replaceAll("\\s+",""))) { //check for the last element
+		contact_name = a1.retrieve();}
 		System.out.println("Enter event date and time: ");
 		String date_time = input.nextLine();
 		System.out.println("Enter event location: ");
@@ -106,19 +109,21 @@ do{
 		
 	case 6:
 		//Print contacts by first name
-		a1.findfirst();
 		System.out.println("Enter the contact first name");
 		String Contact_firstName = input.next();
 			System.out.println("The contact who have the first name are:");
 			a1.findfirst();
 			while(!a1.last()) {
-			int IndexSpace = a1.retrieve().getContactName().indexOf(' ');
-			String first_name = a1.retrieve().getContactName().substring(0 , IndexSpace);
-			if(first_name.equalsIgnoreCase(Contact_firstName));
-			System.out.println(a1.retrieve().getContactName() + " , " + a1.retrieve().getPhoneNumber() + " , " + a1.retrieve().getAddress() + " , " + a1.retrieve().getBirthday() + " , " + a1.retrieve().getNote());
+			String [] all_name = a1.retrieve().getContactName().split(" ");
+			String first_name = all_name[0]; //to get the first name 
+			if(first_name.equalsIgnoreCase(Contact_firstName)) {
+			System.out.println(a1.retrieve().getContactName() + " , " + a1.retrieve().getPhoneNumber() + " , " + a1.retrieve().getAddress() + " , " + a1.retrieve().getBirthday() + " , " + a1.retrieve().getNote());}
 			a1.findnext();
 			}
-			
+			String [] all_name = a1.retrieve().getContactName().split(" ");
+			String first_name = all_name[0];
+			if(first_name.equalsIgnoreCase(Contact_firstName)) {
+			System.out.println(a1.retrieve().getContactName() + " , " + a1.retrieve().getPhoneNumber() + " , " + a1.retrieve().getAddress() + " , " + a1.retrieve().getBirthday() + " , " + a1.retrieve().getNote());}
 		break;
 		
 		
@@ -126,10 +131,11 @@ do{
 	case 7:
 		// Print all events alphabetically >> its already ordered(when we add it) so we just need to print it
 		e1.findfirst();
-while(e1.last() == false)
+while(!e1.last())
 {
 	Event e2 = e1.retrieve();
 	System.out.println(e2.getEventTitle() + "," + e2.getDateAndTime() + "," + e2.getLocation() + "," + e2.getContact().getContactName());
+	e1.findnext();
 }
 Event e2 = e1.retrieve();
 System.out.println(e2.getEventTitle() + "," + e2.getDateAndTime() + "," + e2.getLocation() + "," + e2.getContact().getContactName());// for the last element
@@ -140,6 +146,18 @@ case 8:
 	ch = 8;
 	break;
 	}
+	
+
 }while(ch != 8);
+
+//هذا حطيته عشان اشوف الليست بعد التعديل وكذا يعني حق تشييك مو من ضمن الكود
+a1.findfirst();
+while(!a1.last()) {
+	System.out.println(a1.retrieve().getContactName());
+	a1.findnext();
+	
+}
+System.out.println(a1.retrieve().getContactName());
+a1.findnext();
 
 }}
