@@ -9,7 +9,7 @@ private String emailAddress;
 private String address;
 private String birthday;
 private String notes;
-private LinkedList<Event> events;
+
 
 public Contact(){
 }
@@ -21,7 +21,7 @@ emailAddress=c.emailAddress;
 address=c.address;
 birthday=c.birthday;
 notes=c.notes;
-events=c.events;
+
 }
 
 public Contact(String contactName, String phoneNumber, String emailAddress, String address, String birthday, String notes){
@@ -31,21 +31,32 @@ this.emailAddress=emailAddress;
 this.address=address;
 this.birthday=birthday;
 this.notes=notes;
-this.events=events;
+
 }
 
 public String getContactName(){
 return contactName;
 }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
+public String getPhoneNumber() {
+      return phoneNumber;
+}
 
-    public LinkedList<Event> getEvents() {
-        return events;
-    }
+public String getEmailAddress() {
+	return emailAddress;
+}
 
+public String getAddress() {
+	return address;
+}
+
+public String getBirthday() {
+	return birthday;
+}
+
+public String getNote() {
+	return notes;
+}
 
 public void setContactName(String n){
 contactName=n;
