@@ -2,277 +2,166 @@ package Csc212Project;
 
 public class LinkedList<T>{
 
-  private Node<T> head;
-	
-	
-	
-	// needs modifying 
-	
+	  private Node<T> head;
+	  private Node<T> current; 
+		
+		
+		
+		// needs modifying 
+		
 
-	public LinkedList() {
-		
-		head = null;
-		
-	}
+		public LinkedList() {
+			
+			head = current = null;
+			
+		}
 
-	public LinkedList(Node<T> head) {
-		
-		head = head;
-		
-	}
-	
-	public boolean isEmpty() {
-		
-		return head == null;
-		
-	}
-	
-	public void add(T n) {
-		
-		Node<T> newNode = new Node<>(n);
-		
-		if(isEmpty()) {
-			head = newNode;
-			return;
-		}
-		
-		if(exist((Contact) n)) {
+		public LinkedList(Node<T> head) {
 			
-			return;
+			head = head;
 			
 		}
 		
-		if(((Contact) newNode.getData()).getContactName().compareToIgnoreCase(((Contact) head.getData()).getContactName()) < 0) {
+		public boolean isEmpty() {
 			
-			newNode.setNext(head);
-			
-			head = newNode;
-			
-			return;
+			return head == null;
 			
 		}
-	
-		else {
+		
+		public void findfirst () {
+		       current = head;
+		 }
+		
+		public void findnext () 
+		{ current = current.next;
+		 }
+		
+		 public T retrieve () {
+		return current.getData(); }
+		 
+		public void update (T val) 
+		{ current.data = val;
+		}
+		
+		
+		public boolean last () {
+			return current.next == null;
+			}
+		
+		
+		
+//add
+		public void add(T n) {
+			Node<T> newNode = new Node<>(n);		
+			if(exist((Contact) n)) {return;}//exist
+		
+			if (head == null || ((Contact)head.getData()).getContactName().replaceAll("\\s+","").compareToIgnoreCase(((Contact)newNode.getData()).getContactName().replaceAll("\\s+","")) > 0) 
+			{
+				newNode.next = head;
+				head = newNode;
+			}
+			else {
+				 Node current = head;
+			     while (current.next != null && ((Contact)current.next.getData()).getContactName().replaceAll("\\s+","").compareToIgnoreCase(((Contact)newNode.getData()).getContactName().replaceAll("\\s+","")) < 0)  {
+			         current = current.next;
+			     }
+			     newNode.next = current.next;
+			     current.next = newNode;
+			     current = current.next;
+			}}
+
+
+		
+		
+		
+		
+		public T search(T s) {
 			
-			Node<T> current = head;
+			if(isEmpty())
+				return null; //message?
 			
-			while(current != null) {
+			else {
 				
-				if(((Contact) newNode.getData()).getContactName().compareToIgnoreCase(((Contact) current.getData()).getContactName()) < 0) {
+				Node<T> current = head;
+				
+				while (current != null) {
+					
+					if(current.getData().equals(s))
+						return current.getData();
 					
 					current = current.getNext();
 					
-					continue;
-					
-				}				
-				
-				Node<T> temp = current.getNext();
-				
-				current.setNext(newNode);
-				
-				newNode.setNext(temp);
-				
-			}
-			
-			current.setNext(newNode);		
-			
-		}	
-		
-	}
-	
-	/*public T search(T s, int n) {
-		
-		if(isEmpty())
-			return null; //message?
-		
-		if(n == 1) {
-			
-			
-			
-		}
-		
-		else {
-			
-			Node<T> current = head;
-			
-			while (current != null) {
-				
-				if(current.getData().equals(s))
-					return current.getData();
-				
-				current = current.getNext();
-				
-			}
-			
-			return null;
-			
-		}
-		
-	}*/
-	
-	public void delete(T d) {
-		
-		if(isEmpty())
-			return;   //message?
-		
-		if(head.getData().equals(d)) {
-			head = head.getNext();
-			return;
-		}
-		
-		else {
-			
-            Node<T> current = head.getNext();
-            Node<T> previous = head;
-            	
-			while (current != null) {
-				
-				if(current.getData().equals(d))
-					previous.setNext(current.getNext());
-				
-				else {
-					
-					previous = current;
-					
-					current = current.getNext();
-		
 				}
 				
-			}
-					
-		}
-	
-	
-	
-	
-	
-
-}
-	
-	public boolean exist(Contact c) {
-		
-		Node<Contact> current = (Node<Contact>) head;
-		
-		while(current != null){
-			
-			if(current.getData().getContactName().compareTo(c.getContactName()) == 0 || current.getData().getPhoneNumber().compareTo(c.getPhoneNumber()) == 0)
-			   return true;
-				
-			current = current.getNext();
-			
-		}
-		
-		return false;
-	}
-
-  
-
-}
-
-		Node<T> newNode = new Node<>(n);
-		
-		if(isEmpty())
-			head = newNode;
-		
-		else {
-			
-			Node<T> current = head;
-			
-			while(current.getNext() != null) {
-				
-				current = current.getNext();
+				return null;
 				
 			}
 			
-			current.setNext(newNode);		
-			
-		}	
+		}
 		
-	}
-	
-	public T search(T s) {
-		
-		if(isEmpty())
-			return null; //message?
-		
-		else {
+		public void delete(T d) {
 			
-			Node<T> current = head;
+			if(isEmpty())
+				return ;   //message?
 			
-			while (current != null) {
-				
-				if(current.getData().equals(s))
-					return current.getData();
-				
-				current = current.getNext();
-				
+			if(head.getData().equals(d)) {
+				head = head.getNext();
+				return;
 			}
 			
-			return null;
-			
-		}
-		
-	}
-	
-	public void delete(T d) {
-		
-		if(isEmpty())
-			return;   //message?
-		
-		if(head.getData().equals(d)) {
-			head = head.getNext();
-			return;
-		}
-		
-		else {
-			
-            Node<T> current = head.getNext();
-            Node<T> previous = head;
-            	
-			while (current != null) {
+			else {
 				
-				if(current.getData().equals(d))
-					previous.setNext(current.getNext());
-				
-				else {
+	            Node<T> current = head.getNext();
+	            Node<T> previous = head;
+	            	
+				while (current != null) {
 					
-					previous = current;
+					if(current.getData().equals(d))
+						previous.setNext(current.getNext());
 					
-					current = current.getNext();
-		
+					else {
+						
+						previous = current;
+						
+						current = current.getNext();
+			
+					}
+					
 				}
+						
+			}
+		
+		
+		
+		
+		
+
+	}
+		
+		public boolean exist(Contact c) {
+			
+			Node<Contact> current = (Node<Contact>) head;
+			
+			while(current != null){
+				
+				if(current.getData().getContactName().compareTo(c.getContactName()) == 0 )
+				   return true;
+					
+				current = current.getNext();
 				
 			}
-					
+			
+			return false;
+			
+			
+			
+			
 		}
-	
-	
-	
-	
-	
 
-}
-	
-	public boolean exist(Contact c) {
-		
-		Node<Contact> current = (Node<Contact>) head;
-		
-		while(current != null){
-			
-			if(current.getData().getContactName().compareTo(c.getContactName()) == 0 || current.getData().getPhoneNumber().compareTo(c.getPhoneNumber()) == 0)
-			   return true;
-				
-			current = current.getNext();
-			
-		}
-		
-		return false;
-		
-		
-		
-		
+
+	  
+
 	}
-
 
   
 
