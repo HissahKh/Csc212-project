@@ -50,8 +50,8 @@ public class EventLinkedList<T>{
 		
 //add
 		public void add(T n) {
-			Node<T> newNode = new Node<>(n);		
-			if(exist((Event) n)) {return;}//exist
+			Node<T> newNode = new Node<>(n);
+			Contact contact = ((Event)newNode.getData()).getContact();
 			
 
 			if (head == null || ((Event)head.getData()).getEventTitle().replaceAll("\\s+","").compareToIgnoreCase(((Event)newNode.getData()).getEventTitle().replaceAll("\\s+","")) > 0) 
@@ -74,27 +74,34 @@ public class EventLinkedList<T>{
 		
 		
 		
-		public T search(T s) {
+		public boolean search (String s, int n) {
 			
-			if(isEmpty())
-				return null; //message?
+			if(isEmpty()) {
+			System.out.print("There is no events");
+			return false;
+			}
 			
-			else {
+			current = head;
+			
+			while(current != null){
+			if(n == 1) {
+				if(s.equals(((Event) current.getData()).getContact().getContactName()))
+						{
+				System.out.println(((Event) current.getData()).getEventTitle() + " , " + ((Event) current.getData()).getDateAndTime() + " , "  + ((Event) current.getData()).getLocation() + " , " + "Contact: " + ((Event) current.getData()).getContact().getContactName() + " , " + ((Event) current.getData()).getContact().getPhoneNumber() + " , " + ((Event) current.getData()).getContact().getEmailAddress() + " , " + ((Event) current.getData()).getContact().getAddress() + " , " + ((Event) current.getData()).getContact().getBirthday());;
 				
-				Node<T> current = head;
-				
-				while (current != null) {
-					
-					if(current.getData().equals(s))
-						return current.getData();
-					
-					current = current.getNext();
-					
 				}
+			}
 				
-				return null;
+			if(n == 2){
+			
+				if(s.equals(((Event) current.getData()).getEventTitle())){
+					System.out.println(((Event) current.getData()).getEventTitle() + " , " + ((Event) current.getData()).getDateAndTime() + " , "  + ((Event) current.getData()).getLocation() + " , " + "Contact: " + ((Event) current.getData()).getContact().getContactName() + " , " + ((Event) current.getData()).getContact().getPhoneNumber() + " , " + ((Event) current.getData()).getContact().getEmailAddress() + " , " + ((Event) current.getData()).getContact().getAddress() + " , " + ((Event) current.getData()).getContact().getBirthday());;					
+			}
 				
 			}
+			current = current.next;
+			}
+		return true;
 			
 		}
 		
