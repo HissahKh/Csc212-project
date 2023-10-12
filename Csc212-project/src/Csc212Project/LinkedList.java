@@ -76,69 +76,66 @@ public class LinkedList<T>{
 		
 		
 		
-		
-	public boolean search(T s, int n) {
-		
-		if(isEmpty())
-			return false; //message?
+		public boolean search(String s, int n) {
 			
-		
-		Node<T> newNode = new Node<T>(s);
-		
-		Node<T> current = head;
-		
-		while(current != null){
-		
-		if(n == 1) {
-		
-			if(((Contact) newNode.getData()).getContactName().equals(((Contact) current.getData()).getContactName())){
+			if(isEmpty())
+				return false; //message?
+				
 			
-			return true;
+			current = head;
+			
+			while(current != null){
+			
+			if(n == 1) {
+			
+				if(s.equals(((Contact) current.getData()).getContactName()))
+						{
+				
+				System.out.println(((Contact) current.getData()).getContactName() + "," + ((Contact) current.getData()).getPhoneNumber() + ","  + ((Contact) current.getData()).getEmailAddress() + "," + ((Contact) current.getData()).getAddress() + "," + ((Contact) current.getData()).getBirthday() + "," + ((Contact) current.getData()).getNote());
+				
+				}
+			}
+				
+			if(n == 2){
+			
+				if(s.equals(((Contact) current.getData()).getPhoneNumber())){
+				System.out.println(((Contact) current.getData()).getContactName() + "," + ((Contact) current.getData()).getPhoneNumber() + ","  + ((Contact) current.getData()).getEmailAddress() + "," + ((Contact) current.getData()).getAddress() + "," + ((Contact) current.getData()).getBirthday() + "," + ((Contact) current.getData()).getNote());
+							
+			}
+				
+			}
+			if(n == 3){
+				
+				if(s.equals(((Contact) current.getData()).getEmailAddress())){
+				
+				System.out.println(((Contact) current.getData()).getContactName() + "," + ((Contact) current.getData()).getPhoneNumber() + ","  + ((Contact) current.getData()).getEmailAddress() + "," + ((Contact) current.getData()).getAddress() + "," + ((Contact) current.getData()).getBirthday() + "," + ((Contact) current.getData()).getNote());
+					
+			}
+			}
+			
+			if(n == 4){
+			
+				if(s.equals(((Contact) current.getData()).getEmailAddress())){
+				
+					System.out.println(((Contact) current.getData()).getContactName() + "," + ((Contact) current.getData()).getPhoneNumber() + ","  + ((Contact) current.getData()).getEmailAddress() + "," + ((Contact) current.getData()).getAddress() + "," + ((Contact) current.getData()).getBirthday() + "," + ((Contact) current.getData()).getNote());
+				
+			}
+			}
+			
+			if(n == 5){
+			
+				if(s.equals(((Contact) current.getData()).getBirthday())){
+	
+				System.out.println(((Contact) current.getData()).getContactName() + "," + ((Contact) current.getData()).getPhoneNumber() + ","  + ((Contact) current.getData()).getEmailAddress() + "," + ((Contact) current.getData()).getAddress() + "," + ((Contact) current.getData()).getBirthday() + "," + ((Contact) current.getData()).getNote());	
+			}
 			
 			}
-		}
-			
-		if(n == 2){
-		
-			if(((Contact) newNode.getData()).getPhoneNumber().equals(((Contact) current.getData()).getPhoneNumber())){
+			current = current.next;
+			}
 			
 			return true;
 			
 		}
-		}
-		
-		if(n == 3){
-		
-			if(((Contact) newNode.getData()).getEmailAddress().equals(((Contact) current.getData()).getEmailAddress())){
-			
-			return true;
-			
-		}
-		}
-		
-		if(n == 4){
-		
-			if(newNode.getData().getClass().equals(current.getData().getClass())){
-			
-			return true;
-			
-		}
-		}
-		
-		if(n == 5){
-		
-			if(((Contact) newNode.getData()).getBirthday().equals(((Contact) current.getData()).getBirthday())){
-			
-			return true;
-			
-		}
-		
-		}
-		}
-		
-		return false;
-		
-	}
 		
 		public void delete(T d) {
 			
@@ -185,8 +182,9 @@ public class LinkedList<T>{
 			
 			while(current != null){
 				
-				if(current.getData().getContactName().compareTo(c.getContactName()) == 0 )
+				if(current.getData().getContactName().compareTo(c.getContactName()) == 0 || current.getData().getPhoneNumber().compareTo(c.getPhoneNumber()) == 0 )
 				   return true;
+				
 					
 				current = current.getNext();
 				
@@ -203,7 +201,3 @@ public class LinkedList<T>{
 	  
 
 	}
-	
-			
-			
-			
