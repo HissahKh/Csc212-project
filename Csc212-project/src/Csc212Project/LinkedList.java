@@ -1,5 +1,4 @@
 package Csc212Project;
-
 public class LinkedList<T>{
 
 	  private Node<T> head;
@@ -53,7 +52,9 @@ public class LinkedList<T>{
 //add
 		public void add(T n) {
 			Node<T> newNode = new Node<>(n);		
-			if(exist((Contact) n)) {return;}//exist
+			if(exist((Contact) n)) {
+				System.out.println("The contact is already in");
+				return;}//exist
 		
 			if (head == null || ((Contact)head.getData()).getContactName().replaceAll("\\s+","").compareToIgnoreCase(((Contact)newNode.getData()).getContactName().replaceAll("\\s+","")) > 0) 
 			{
@@ -162,7 +163,7 @@ public class LinkedList<T>{
 	  
 
 	}
-
-  
-
-}
+	
+			
+			
+			
