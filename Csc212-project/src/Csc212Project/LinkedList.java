@@ -6,7 +6,7 @@ public class LinkedList<T>{
 		
 		
 		
-		// needs modifying 
+		
 		
 
 		public LinkedList() {
@@ -79,7 +79,7 @@ public class LinkedList<T>{
 		public boolean search(String s, int n) {
 			
 			if(isEmpty())
-				return false; //message?
+				return false; 
 				
 			
 			current = head;
@@ -201,3 +201,6 @@ public class LinkedList<T>{
 	  
 
 	}
+
+
+
